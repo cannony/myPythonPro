@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:mif="urn:hl7-org:v3/mif"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="urn:hl7-org:v3 file:///C:/Users/Administrator/Desktop/%e9%87%91%e5%9d%9b/CDA/CDA%20Schema/infrastructure/cda/CDA.xsd">
+    <realmCode code="CN"/>
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+    <templateId root="2.16.156.10011.2.1.1.14"/>
+    <id root="2.16.156.10011.1.1.1.4"/>
+    <code code="HSDB04.03" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"
+          displayName="重性精神疾病患者个人信息登记"/>
+    <title>重性精神疾病患者个人信息登记</title>
+    <effectiveTime xsi:type="TS" value="[CreateTime]"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality"
+                         displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <recordTarget typeCode="RCT" contextControlCode="OP">
+        <patientRole classCode="PAT">
+            <id root="2.16.156.10011.1.2" extension="[PHRID]"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <name>[Name]</name>
+                <guardian>
+                    <addr use="H">
+                        <houseNumber>[GuardianPresentAddressHouse]</houseNumber>
+                        <streetName>[GuardianPresentAddressVillage]</streetName>
+                        <township>[GuardianPresentAddressTown]</township>
+                        <county>[GuardianPresentAddressCounty]</county>
+                        <city>[GuardianPresentAddressCity]</city>
+                        <state>[GuardianPresentAddressProvince]</state>
+                    </addr>
+                    <telecom value="[GuardianTelephoneNO]"/>
+                    <guardianPerson>
+                        <name>[GuardianName]</name>
+                    </guardianPerson>
+                </guardian>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author typeCode="AUT" contextControlCode="OP">
+        <time xsi:type="TS" value="[ReportTime]"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id root="2.16.156.10011.1.7" extension="[ReportFlag]"/>
+            <assignedPerson>
+                <name>[DoctorName]</name>
+            </assignedPerson>
+            <representedOrganization>
+                <id root="2.16.156.10011.1.5" extension="[MedicalInstitutionSign]"/>
+                <name>[MedicalInstitutionName]</name>
+                <addr>[MedicalInstitutionAddress]</addr>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="2.16.156.10011.1.6" extension="[CustodianOrganizationSign]"/>
+                <name>[CustodianOrganizationName]</name>
+                <telecom value="[CustodianOrganizationTelephone]"/>
+                <addr>[CustodianOrganizationAddress]</addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time/>
+        <signatureCode/>
+        <assignedEntity>
+            <id/>
+            <assignedPerson>
+                <name>[SignatureDoctorName]</name>
+            </assignedPerson>
+        </assignedEntity>
+    </legalAuthenticator>
+    <participant typeCode="NOT">
+        <associatedEntity classCode="ECON">
+            <telecom value="[NeighborhoodPhone]"/>
+            <associatedPerson>
+                <name>[NeighborhoodContactName]</name>
+            </associatedPerson>
+            <scopingOrganization>
+                <name>[NeighborhoodName]</name>
+            </scopingOrganization>
+        </associatedEntity>
+    </participant>
+    <relatedDocument typeCode="RPLC">
+        <parentDocument classCode="DOCCLIN" moodCode="EVN">
+            <id root="2.16.156.10011.1.1.1.4" extension="D2011000000"/>
+            <setId/>
+            <versionNumber value="1"/>
+        </parentDocument>
+    </relatedDocument>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="34895-3" displayName="EDUCATION NOTE" codeSystem="2.16.840.1.113883.6.1"
+                          codeSystemName="LOINC"/>
+                    <title>知情同意章节</title>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.155.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="知情同意管理标志"/>
+                            <value xsi:type="BL" value="[MarkManagement]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.01.039.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="知情同意签字人姓名"/>
+                            <value xsi:type="ST">[SignatoryName]</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.156.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="知情同意签字日期"/>
+                            <value xsi:type="TS" value="[SignatoryDate]"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code displayName="重性精神病患者健康史"/>
+                    <title>重性精神病史章节</title>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.089.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="首次发病年龄"/>
+                            <value xsi:type="PQ" value="[FirstOnsetAge]" unit="岁"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.030.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="精神症状代码"/>
+                            <value xsi:type="CD" code="[SymptomsCode]" codeSystem="2.16.156.10011.2.3.1.49" codeSystemName="精神症状代码表"
+                                   displayName="[SymptomsCodeName]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.036.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="既往治疗情况"/>
+                            <value xsi:type="CD" code="[TreatmentCode]" codeSystem="2.16.156.10011.2.3.2.63"
+                                   codeSystemName="既往门诊治疗情况代码表" displayName="[TreatmentCodeName]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.160.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="首次抗精神病治疗日期"/>
+                            <value xsi:type="TS" value="[FirstTreatmentDate]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.090.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="既往精神专科住院次数"/>
+                            <value xsi:type="INT" value="[PastHospitalizationText]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.037.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="既往治疗效果"/>
+                            <value xsi:type="CD" code="[TreatmentCategoryCode]" codeSystem="2.16.156.10011.2.3.1.148" codeSystemName="病情转归代码表"
+                                   displayName="[TreatmentCategoryCodeName]"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11450-4" displayName="PROBLEM LIST" codeSystem="2.16.840.1.113883.6.1"
+                          codeSystemName="LOINC"/>
+                    <title>主要健康问题章节</title>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.057.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="患病对家庭社会的影响类别代码条目"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE03.00.022.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="患病对家庭社会的影响次数"/>
+                                    <value xsi:type="INT" value="[InfluenceNumber]"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="1" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="无关锁"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="1" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="贫困，在当地贫困标准线以下"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="29548-5" displayName="Diagnosis" codeSystem="2.16.840.1.113883.6.1"
+                          codeSystemName="LOINC"/>
+                    <title>诊断记录章节</title>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.071.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="诊断结果"/>
+                            <effectiveTime/>
+                            <value xsi:type="CD" code="[DiseaseText]" codeSystem="2.16.156.10011.2.3.1.135"
+                                   codeSystemName="重性精神疾病名称代码表" displayName="[DiseaseTextName]"/>
+                            <performer>
+                                <assignedEntity>
+                                    <id root="2.16.156.10011.1.4"/>
+                                    <representedOrganization>
+                                        <name>[AuthorOrganizationText]</name>
+                                    </representedOrganization>
+                                </assignedEntity>
+                            </performer>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="51848-0" displayName="Assessment note" codeSystem="2.16.840.1.113883.6.1"
+                          codeSystemName="LOINC"/>
+                    <title>健康评估章节</title>
+                    <text/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.120.00" displayName="专科医生意见" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[SpecialistAdvice]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

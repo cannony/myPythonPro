@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClinicalDocument xmlns="urn:hl7-org:v3"
+                  xmlns:mif="urn:hl7-org:v3/mif"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="urn:hl7-org:v3 ..\sdschemas\CDA.xsd">
+    <realmCode code="CN"/>
+    <typeId root="2.16.840.1.113883.1.3" extension=" POCD_MT000040"/>
+    <templateId root="2.16.156.10011.2.1.1.3"/>
+    <id root="2.16.156.10011.1.1.1.1" extension="[NewbornFamilyVisitRecordID]"/>
+    <code codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系" code="HSDB01.02"/>
+    <title>新生儿家庭访视</title>
+    <effectiveTime xsi:type="TS" value="[DocumentEffectiveTime]"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality"
+                         displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget typeCode="RCT" contextControlCode="OP">
+        <patientRole classCode="PAT">
+            <id root="2.16.156.10011.1.10" extension="[PHRID]"/>
+            <id root="2.16.156.10011.1.10" extension="[NewbornFamilyVisitRecordID]"/>
+            <addr use="H">
+                <houseNumber>[PresentAddressHouse]</houseNumber>
+                <streetName>[PresentAddressVillage]</streetName>
+                <township>[PresentAddressTown]</township>
+                <county>[PresentAddressCounty]</county>
+                <city>[PresentAddressCity]</city>
+                <state>[PresentAddressProvince]</state>
+                <postalCode>[PresentAddressPostalCode]</postalCode>
+            </addr>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <id root="2.16.156.10011.1.3"  extension="[IDCard]"/>
+                <name>[BabyName]</name>
+                <administrativeGenderCode code="[BabySex]" displayName="[BabySexName]" codeSystem="2.16.156.10011.2.3.3.4"
+                                          codeSystemName="生理性别代码表(GB/T 2261.1)"/>
+                <birthTime xsi:type="TS" value="[BabyBirth]"/>
+                <guardian>
+                    <code code="51" displayName="父亲" codeSystem="2.16.156.10011.2.3.3.8"/>
+                    <telecom value="[FatherPhone]"/>
+                    <guardianPerson>
+                        <name>[FatherName]</name>
+                        <birthTime  value="[FatherBirthday]"/>
+                        <occupation>
+                            <occupationCode code="[FatherOccupation]" codeSystem="2.16.156.10011.2.3.3.7"
+                                            codeSystemName="职业类别代码表(GB/T 6565)" displayName="[FatherOccupationName]"/>
+                        </occupation>
+                    </guardianPerson>
+                </guardian>
+                <guardian>
+                    <code code="52" displayName="母亲" codeSystem="2.16.156.10011.2.3.3.8"/>
+                    <telecom value="[MotherPhone]"/>
+                    <guardianPerson>
+                        <name>[MotherName]</name>
+                        <birthTime value="[MotherBirth]"/>
+                        <occupation>
+                            <occupationCode code="[MotherOccupation]" codeSystem="2.16.156.10011.2.3.3.7"
+                                            codeSystemName="职业类别代码表(GB/T 6565)" displayName="[MotherOccupationName]"/>
+                        </occupation>
+                    </guardianPerson>
+                </guardian>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author typeCode="AUT" contextControlCode="OP">
+        <time xsi:type="TS" value="[NeonatalVisitDate]"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id root="2.16.156.10011.1.7"/>
+            <assignedPerson>
+                <name>[NeonatalVisitingPhysicianName]</name>
+            </assignedPerson>
+            <representedOrganization>
+                <id root="2.16.156.10011.1.5" extension="[MedicalInstitutionSign]"/>
+                <name>[MedicalInstitutionName]</name>
+                <addr>[MedicalInstitutionAddress]</addr>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="2.16.156.10011.1.6" extension="[CustodianOrganizationSign]"/>
+                <name>[CustodianOrganizationName]</name>
+                <telecom value="[CustodianOrganizationTelephone]"/>
+                <addr>[CustodianOrganizationAddress]</addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <relatedDocument typeCode="APND">
+        <parentDocument>
+            <id root="2.16.156.10011.1.1.1.1" extension="D2011000000"/>
+            <setId/>
+            <versionNumber/>
+        </parentDocument>
+    </relatedDocument>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="11450-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                          displayName="PROBLEM LIST"/>
+                    <text>主要健康问题</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.006.00" displayName="出生孕周" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" unit="周" value="[Gestation]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE08.10.013.00" displayName="助产机构名称" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[DeliveryOrganization]</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.055.00" displayName="母亲妊娠合并症" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[PregnancyComplications]</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.011.00" displayName="末次分娩方式代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[DeliveryModeCode]" displayName="[DeliveryModeCodeName]" codeSystem="2.16.156.10011.2.3.1.10"
+                                   codeSystemName="分娩方式代码表"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.086.00" displayName="新生儿窒息标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[NeonatalAsphyxiaFlag]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.001.00" displayName="Apgar评分值" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[ApgarScore]" unit="分"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.116.00" displayName="喂养情况" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[FeedingCategoryCode]" displayName="[FeedingCategoryCodeName]" codeSystem="2.16.156.10011.2.3.2.16"
+                                   codeSystemName="婴儿喂养方式类别代码表"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.01.042.00" displayName="每天吃奶次数" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="PQ" value="[FeedingTimes]" unit="次/天"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="CAUS">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.01.043.00" displayName="每天吃奶量" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="PQ" value="[DailyFeedingAmount]" unit="ml"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.01.048.00" displayName="呕吐标志" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="BL" value="[VomitingFlag]"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.013.00" displayName="新生儿大便性状代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[NeonatalStoolCode]" displayName="[NeonatalStoolCodeName]" codeSystem="2.16.156.10011.2.3.1.52"
+                                   codeSystemName="儿童大便性状代码表"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.007.00" displayName="大便次数" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[StoolFrequency]" unit="次/d"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10195-6" codeSystem="2.16.840.1.113883.6.1" displayName="EAR" codeSystemName="LOINC"/>
+                    <text>耳观察信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.029.00" displayName="耳外观检查异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[AppearanceAbnormalFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.028.00" displayName="耳外观检查异常结果描述"
+                                          codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="ST">[AppearanceAbnormalResultDescribe]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.30.042.00" displayName="新生儿听力筛查结果代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[ResultsNewbornHearingCode]" displayName="[ResultsNewbornHearingCodeName]" codeSystem="2.16.156.10011.2.3.2.15"
+                                   codeSystemName="新生儿听力筛查结果代码表"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                          displayName="STUDIES SUMMARY"/>
+                    <text>实验室检查记录信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.50.087.00" displayName="新生儿疾病筛查代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[NeonatalScreeningCode]" displayName="[NeonatalScreeningCodeName]" codeSystem="2.16.156.10011.2.3.1.88"
+                                   codeSystemName="新生儿疾病筛查项目代码表"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" displayName="VITAL SIGNS"
+                          codeSystemName="LOINC"/>
+                    <text>生命体征信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.186.00" displayName="体温" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[Temperature]" unit="℃"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.118.00" displayName="脉率" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[Pulse]" unit="次/min"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.082.00" displayName="呼吸频次" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[RespiratoryRate]" unit="次/min"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.166.00" displayName="身长" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[LengthCode]" unit="cm"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.188.00" displayName="体重" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[NeonatalWeight]" unit="kg"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.019.00" displayName="出生体重" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[BirthWeight]" unit="g"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.018.00" displayName="出生身长" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[BirthLength]" unit="cm"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="29302-7" codeSystem="2.16.840.1.113883.6.1" displayName="INTEGUMENTARY SYSTEM"
+                          codeSystemName="LOINC"/>
+                    <text>皮肤信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.129.00" displayName="皮肤检查结果代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[SkinExaminationResultCode]" displayName="[SkinExaminationResultCodeName]" codeSystem="2.16.156.10011.2.3.1.58"
+                                   codeSystemName="皮肤检查结果代码表"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.086.00" displayName="黄疸部位代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[JaundiceSiteCode]" displayName="[JaundiceSiteCodeName]" codeSystem="2.16.156.10011.2.3.1.63"
+                                   codeSystemName="黄疸部位代码表"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10210-3" codeSystem="2.16.840.1.113883.6.1" displayName="GENERAL STATUS"
+                          codeSystemName="LOINC"/>
+                    <text>一般外观信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.026.00" displayName="新生儿面色代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CE" code="[NewbornFace]" displayName="[NewbornFaceName]" codeSystem="2.16.156.10011.2.3.1.62"
+                                   codeSystemName="儿童面色代码表"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.029.00" displayName="新生儿畸形标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[NeonatalMalformationsFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE02.10.025.00" displayName="新生儿畸形描述代码"
+                                          codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="ST">[NeonatalMalformationDescription]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10199-8" codeSystem="2.16.840.1.113883.6.1" displayName="HEAD" codeSystemName="LOINC"/>
+                    <text>头部信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.151.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="true"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.152.00" displayName="前囟横径" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="PQ" value="[AnteriorTransverseDiameter]" unit="cm"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.153.00" displayName="前囟纵径" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="PQ" value="[AnteriorLongitudinalDiameter]" unit="cm"/>
+                                </observation>
+                            </entryRelationship>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.154.00" displayName="前囟张力代码" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="CD" code="[AnteriorFontanelle]" displayName="[AnteriorFontanelleName]" codeSystem="2.16.156.10011.2.3.1.72"
+                                           codeSystemName="前囟张力代码表"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10197-2" codeSystem="2.16.840.1.113883.6.1" displayName="Physical findings of Eye"
+                          codeSystemName="LOINC"/>
+                    <text>眼睛信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.217.00" displayName="眼外观检查异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[AbnormalEyeSign]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.216.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="眼外观检查异常结果描述"/>
+                                    <value xsi:type="ST">[AppearanceAbnormalResultDescribing]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10196-4" codeSystem="2.16.840.1.113883.6.1" displayName="EXTREMITIES"
+                          codeSystemName="LOINC"/>
+                    <text>四肢信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.180.00" displayName="四肢活动度异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[AbnormalLimbsFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.179.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="四肢活动度异常结果描述"/>
+                                    <value xsi:type="ST">[AbnormalLimbsDescribe]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11411-6" codeSystem="2.16.840.1.113883.6.1" displayName="NECK" codeSystemName="LOINC"/>
+                    <text>颈部信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.104.00" displayName="颈部包块标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[NeckMassFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.103.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="颈部包块检查结果描述"/>
+                                    <value xsi:type="ST">[NeckMassDescribe]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10203-8" codeSystem="2.16.840.1.113883.6.1" displayName="NOSE" codeSystemName="LOINC"/>
+                    <text>鼻信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.004.00" displayName="鼻检查异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[NasalAbnormalFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code=" DE04.10.003.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="鼻检查异常结果描述"/>
+                                    <value xsi:type="ST">[NasalAbnormalitiesResultDescription]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10201-2" codeSystem="2.16.840.1.113883.6.1" displayName="EMOUTH and THROAT and TEETH"
+                          codeSystemName="LOINC"/>
+                    <text>口腔、咽喉和牙齿信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.108.00" displayName="口腔检查异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[ExaminationAbnormalFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.107.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="口腔检查异常结果描述"/>
+                                    <value xsi:type="ST">[OralExaminationAbnormalResultDescribed]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10205-3" codeSystem="2.16.840.1.113883.6.1" displayName="RECTUM"
+                          codeSystemName="LOINC"/>
+                    <text>直肠信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.063.00" displayName="肛门检查异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[AnusAbnormalityFlag]"/>
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="DE04.10.240.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录" displayName="肛门检查异常结果描述"/>
+									<value xsi:type="ST">[AnusAbnormalityDescribe]</value>
+								</observation>
+							</entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10200-4" codeSystem="2.16.840.1.113883.6.1" displayName="HEART" codeSystemName="LOINC"/>
+                    <text>心脏信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.208.00" displayName="心脏听诊异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[AbnormalSigns]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.207.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="心脏听诊异常结果描述"/>
+                                    <value xsi:type="ST">[AuscultationResults]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11412-4" codeSystem="2.16.840.1.113883.6.1" displayName="RESPIRATORY SYSTEM"
+                          codeSystemName="LOINC"/>
+                    <text>呼吸情况</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.034.00" displayName="肺部听诊异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[DifferentLungAuscultationFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.207.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="肺部听诊异常结果描述"/>
+                                    <value xsi:type="ST">[DifferentLungDescriptionAuscultation]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11412-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                          displayName="RESPIRATORY SYSTEM"/>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.034.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="肺部听诊异常标志"/>
+                            <value xsi:type="BL" value="[DifferentLungAuscultationFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.032.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="肺部听诊异常结果描述"/>
+                                    <value xsi:type="ST">[DifferentLungDescriptionAuscultation]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11400-9" codeSystem="2.16.840.1.113883.6.1" displayName="GENITALIA"
+                          codeSystemName="LOINC"/>
+                    <text>生殖器检查信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.196.00" displayName="外生殖器检查异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[GenitaAbnormalFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.195.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="外生殖器检查异常结果描述"/>
+                                    <value xsi:type="ST">[GenitaAbnormalDescribe]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="10191-5" codeSystem="2.16.840.1.113883.6.1" displayName="ABDOMEN"
+                          codeSystemName="LOINC"/>
+                    <text>腹部检查信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.047.00" displayName="腹部触诊异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[AbdominalPalpationAbnormalFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.046.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="腹部触诊异常结果描述"/>
+                                    <value xsi:type="ST">[AbdominalPalpationResultDescribe]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.146.00" displayName="脐带脱落标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="false"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.241.00" displayName="脐带检查结果代码" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="CD" code="[CheckUmbilicalCordCode]" displayName="[CheckUmbilicalCordCodeName]" codeSystem="2.16.156.10011.2.3.1.73"
+                                           codeSystemName="脐带检查结果代码表"/>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="32476-4" codeSystem="2.16.840.1.113883.6.1" displayName="Physical findings of spine"
+                          codeSystemName="LOINC"/>
+                    <text>脊柱检查情况</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.094.00" displayName="脊柱检查异常标志" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[SpinaeAbnormalFlag]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.093.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="脊柱检查异常结果描述"/>
+                                    <value xsi:type="ST">[SpinaeAbnormalDescribe]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="69730-0" codeSystem="2.16.840.1.113883.6.1" displayName="Instructions"
+                          codeSystemName="LOINC"/>
+                    <text>健康指导信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE06.00.120.00" displayName="健康指导条目代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[VisitNeonatesHealthCategoryCode]" displayName="[VisitNeonatesHealthCategoryCodeName]" codeSystem="2.16.156.10011.2.3.1.193"
+                                   codeSystemName="儿童健康指导类别代码表"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-1" codeSystem="2.16.840.1.113883.6.1" displayName="referal"
+                          codeSystemName="LOINC"/>
+                    <text>转诊建议</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.174.00" displayName="转诊标志代码" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[ReferralFlag]"/>
+                            <entryRelationship typeCode="CAUS">
+                                <act classCode="INFRM" moodCode="APT" negationInd="false">
+                                    <code code="DE06.00.177.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="转诊原因"/>
+                                    <text>[NeonatalReferralReason]</text>
+                                    <performer>
+                                        <time/>
+                                        <assignedEntity>
+                                            <id/>
+                                            <representedOrganization>
+                                                <name>[AntoMedicalInstitutionName]</name>
+                                                <asOrganizationPartOf>
+                                                    <wholeOrganization>
+                                                        <name>[IntoDepartmentName]</name>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </representedOrganization>
+                                        </assignedEntity>
+                                    </performer>
+                                </act>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code displayName="下次随访安排"/>
+                    <text>下次随访安排信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE06.00.109.00" displayName="下次随访日期" codeSystem="2.16.156.10011.2.2.1"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="TS" value="[NextTimeNeonatalVisitDate]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="INT">
+                            <code code="DE02.01.057.00" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"
+                                  displayName="下次访视地点"/>
+                            <value xsi:type="ST">[NextvisitAddress]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

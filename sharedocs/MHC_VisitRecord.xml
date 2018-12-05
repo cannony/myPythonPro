@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClinicalDocument xmlns="urn:hl7-org:v3"
+                  xmlns:mif="urn:hl7-org:v3/mif"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="urn:hl7-org:v3 ..\sdschemas\CDA.xsd">
+    <realmCode code="CN"/>
+    <typeId extension="POCD_MT000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="2.16.156.10011.2.1.1.6"/>
+    <id root="2.16.156.10011.1.1.1.2" extension="[VisitID]"/>
+    <code code="HSDB02.02" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>产前随访服务</title>
+    <effectiveTime value="[DocumentEffectiveTime]"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality"
+                         displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget typeCode="RCT" contextControlCode="OP">
+        <patientRole classCode="PAT">
+            <id root="2.16.156.10011.1.2" extension="[PHRID]"/>
+            <telecom value="[MobileNumber]"/>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <name>[Name]</name>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author typeCode="AUT" contextControlCode="OP">
+        <time xsi:type="TS" value="[FillingDate]"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id root="2.16.156.10011.1.7" extension="[PrenatalDoctorID]"/>
+            <assignedPerson>
+                <name>[PrenatalDoctor]</name>
+            </assignedPerson>
+            <representedOrganization>
+                <id root="2.16.156.10011.1.5" extension="[MedicalInstitutionSign]"/>
+                <name>[MedicalInstitutionName]</name>
+                <addr>[MedicalInstitutionAddress]</addr>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="2.16.156.10011.1.6" extension="[CustodianOrganizationSign]"/>
+                <name>[CustodianOrganizationName]</name>
+                <telecom value="[CustodianOrganizationTelephone]"/>
+                <addr>[CustodianOrganizationAddress]</addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" displayName="VITAL SIGNS"
+                          codeSystemName="LOINC"/>
+                    <title>生命体征章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.188.00" codeSystem="2.16.156.10011.2.2.1" displayName="体重(kg)"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" unit="kg" value="[Weight]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <organizer classCode="BATTERY" moodCode="EVN">
+                            <code displayName="血压"/>
+                            <statusCode code="complete"/>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.174.00" codeSystem="2.16.156.10011.2.2.1" displayName="收缩压"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="PQ" unit="mmHg" value="[Constriction]"/>
+                                </observation>
+                            </component>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.10.176.00" codeSystem="2.16.156.10011.2.2.1" displayName="舒张压"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="PQ" unit="mmHg" value="[Diastolic]"/>
+                                </observation>
+                            </component>
+                        </organizer>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="11450-4" displayName="PROBLEM LIST" codeSystem="2.16.840.1.113883.6.1"
+                          codeSystemName="LOINC"/>
+                    <title>主要健康问题章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.242.00" codeSystem="2.16.156.10011.2.2.1" displayName="随访孕周"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" value="[PrenatalFollowUpGestationalWeeks]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.01.119.00" codeSystem="2.16.156.10011.2.2.1" displayName="主诉"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[ChiefComplaint]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="57073-9" codeSystem="2.16.840.1.113883.6.1" displayName="Prenatal events"
+                          codeSystemName="LOINC"/>
+                    <title>产科检查章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.067.00" codeSystem="2.16.156.10011.2.2.1" displayName="宫底高度"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" unit="cm" value="[FundalHeight]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.052.00" codeSystem="2.16.156.10011.2.2.1" displayName="腹围"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" unit="cm" value="[Abdominal]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.01.044.00" codeSystem="2.16.156.10011.2.2.1" displayName="胎方位"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[FetalPositionCode]" codeSystem="2.16.156.10011.2.3.1.106" displayName="[FetalPositionCodeName]"
+                                   codeSystemName="胎方位代码表"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.183.00" codeSystem="2.16.156.10011.2.2.1" displayName="胎心率"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="PQ" unit="次/min" value="[HeartRate]"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="30954-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"
+                          displayName="STUDIES SUMMARY"/>
+                    <title>实验室检查章节</title>
+                    <entry>
+                        <organizer classCode="BATTERY" moodCode="EVN">
+                            <statusCode code="complete"/>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.50.091.00" codeSystem="2.16.156.10011.2.2.1" displayName="血红蛋白代码"
+                                          codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="PQ" value="[Hemoglobin]" unit="g/L"/>
+                                </observation>
+                            </component>
+                        </organizer>
+                    </entry>
+                    <entry>
+                        <organizer classCode="BATTERY" moodCode="EVN">
+                            <statusCode code="complete"/>
+                            <component>
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE04.50.050.00" codeSystem="2.16.156.10011.2.2.1"
+                                          displayName="尿实验室定性检测结果代码表" codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="CD" code="[QualitativeUrineResultCode]" codeSystem="2.16.156.10011.2.3.1.95" displayName="[QualitativeUrineResultCodeName]"
+                                           codeSystemName="尿实验室定性检测结果代码表"/>
+                                </observation>
+                            </component>
+                        </organizer>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="30954-2" displayName="STUDIES SUMMARY" codeSystem="2.16.840.1.113883.6.1"
+                          codeSystemName="LOINC"/>
+                    <title>辅助检查章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.30.002.00" codeSystem="2.16.156.10011.2.2.1" displayName="B超"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[BUltrasonicDiagnosis]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="51848-0" displayName="Assessment note" codeSystem="2.16.840.1.113883.6.1"
+                          codeSystemName="LOINC"/>
+                    <title>健康评估章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.125.00" codeSystem="2.16.156.10011.2.2.1" displayName="孕产妇健康评估异常标志"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[MaternalAssessmentAbnormalitie]"/>
+                            <entryRelationship typeCode="COMP">
+                                <observation classCode="OBS" moodCode="EVN">
+                                    <code code="DE05.10.125.00" codeSystem="2.16.156.10011.2.2.1"
+                                          displayName="孕产妇健康评估异常结果描述" codeSystemName="卫生信息数据元目录"/>
+                                    <value xsi:type="ST">[MaternalHealthAssessmentResultsDescribed]</value>
+                                </observation>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="69730-0" codeSystem="2.16.840.1.113883.6.1" displayName="Instructions"
+                          codeSystemName="LOINC"/>
+                    <title>健康指导章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.152.00" codeSystem="2.16.156.10011.2.2.1" displayName="DE06.00.152.00"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[MaternalHealthGuidanceCategoryCode]" codeSystem="2.16.156.10011.2.3.1.195" displayName="[MaternalHealthGuidanceCategoryCodeName]"
+                                   codeSystemName="孕产妇健康指导类别代码表"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="18776-1" codeSystem="2.16.840.1.113883.6.1" displayName="referal"
+                          codeSystemName="LOINC"/>
+                    <title>转诊建议章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE06.00.174.00" codeSystem="2.16.156.10011.2.2.1" displayName="转诊条目"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="BL" value="[ReferralFlag]"/>
+                            <entryRelationship typeCode="CAUS" negationInd="false">
+                                <act classCode="INFRM" moodCode="APT" negationInd="false">
+                                    <code code="DE06.00.177.00" codeSystem="2.16.156.10011.2.2.1"
+                                          codeSystemName="卫生信息数据元目录" displayName="转诊原因"/>
+                                    <text>[MaternalReferralReason]</text>
+                                    <performer>
+                                        <time/>
+                                        <assignedEntity>
+                                            <id/>
+                                            <representedOrganization>
+                                                <name>[MaternalIntoMedicalInstitutionName]</name>
+                                                <asOrganizationPartOf>
+                                                    <wholeOrganization>
+                                                        <name>[IntoOrganizationName]</name>
+                                                    </wholeOrganization>
+                                                </asOrganizationPartOf>
+                                            </representedOrganization>
+                                        </assignedEntity>
+                                    </performer>
+                                </act>
+                            </entryRelationship>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="185389009" displayName="下次随访安排" codeSystem="2.16.840.1.113883.6.96"
+                          codeSystemName="SNOMED CT"/>
+                    <title>下次随访安排章节</title>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE06.00.109.00" codeSystem="2.16.840.1.113883.2.86.6.3" displayName="下次随访日期"
+                                  codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="TS" value="[NextVisitDate]"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE02.01.057.00" codeSystem="2.16.840.1.113883.2.86.6.3"
+                                  codeSystemName="卫生信息数据元目录" displayName="下次随访地点代码"/>
+                            <value xsi:type="ST">[NextTimePrenatalExaminationSite]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>

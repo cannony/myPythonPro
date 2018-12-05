@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClinicalDocument xmlns="urn:hl7-org:v3" 
+    xmlns:mif="urn:hl7-org:v3/mif" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ..\sdschemas\CDA.xsd">
+    <realmCode code="CN"/>
+    <typeId root="2.16.840.1.113883.1.3" extension="POCD_MT000040"/>
+    <templateId root="2.16.156.10011.2.1.1.2"/>
+    <id root="2.16.156.10011.1.1.1.1" extension="[BirthCertificateID]"/>
+    <code code="HSDB01.01" codeSystem="2.16.156.10011.2.4" codeSystemName="卫生信息共享文档规范编码体系"/>
+    <title>出生医学证明</title>
+    <effectiveTime value="[IssueTime1]"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="正常访问保密级别"/>
+    <languageCode code="zh-CN"/>
+    <setId/>
+    <versionNumber/>
+    <recordTarget contextControlCode="OP" typeCode="RCT">
+        <patientRole classCode="PAT">
+            <id root="2.16.156.10011.1.9" extension="[BirthCertificateID]"/>
+            <addr use="H">
+                <houseNumber>[BirthAddressHouse]</houseNumber>
+                <streetName>[BirthAddressVillage]</streetName>
+                <township>[BirthAddressTown]</township>
+                <county>[BirthAddressCounty]</county>
+                <city>[BirthAddressCity]</city>
+                <state>[BirthAddressProvince]</state>
+            </addr>
+            <patient classCode="PSN" determinerCode="INSTANCE">
+                <name>[BabyName]</name>
+                <administrativeGenderCode code="[BabySex]" displayName="[BabySexName]" codeSystem="2.16.156.10011.2.3.3.4" codeSystemName="生理性别代码表(GB/T 2261.1)"/>
+                <birthTime xsi:type="TS" value="[BirthDate]"/>
+                <guardian>
+                    <code code="51" displayName="父亲" codeSystem="2.16.156.10011.2.3.3.8" codeSystemName="家庭关系代码表(GB/T 4761)"/>
+                    <addr use="H">
+                        <houseNumber>[FatheAddressHouse]</houseNumber>
+                        <streetName>[FatheAddressVillage]</streetName>
+                        <township>[FatheAddressTown]</township>
+                        <county>[FatheAddressCounty]</county>
+                        <city>[FatheAddressCity]</city>
+                        <state>[FatheAddressProvince]</state>
+                    </addr>
+                    <guardianPerson>
+                        <name>[FatherName]</name>
+                    </guardianPerson>
+                </guardian>
+                <guardian>
+                    <code code="52" displayName="母亲" codeSystem="2.16.156.10011.2.3.3.8" codeSystemName="家庭关系代码表(GB/T 4761)"/>
+                    <addr use="H">
+                        <houseNumber>[MotherAddressHouse]</houseNumber>
+                        <streetName>[MotherAddressVillage]</streetName>
+                        <township>[MotherAddressTown]</township>
+                        <county>[MotherAddressCounty]</county>
+                        <city>[MotherAddressCity]</city>
+                        <state>[MotherAddressProvince]</state>
+                    </addr>
+                    <guardianPerson>
+                        <name>[MotherName]</name>
+                    </guardianPerson>
+                </guardian>
+                <birthplace>
+                    <place classCode="PLC" determinerCode="INSTANCE">
+                        <addr use="H">
+                            <houseNumber>[BirthAddressHouse]</houseNumber>
+                            <streetName>[BirthAddressVillage]</streetName>
+                            <township>[BirthAddressTown]</township>
+                            <county>[BirthAddressCounty]</county>
+                            <city>[BirthAddressCity]</city>
+                            <state>[BirthAddressProvince]</state>
+                        </addr>
+                    </place>
+                </birthplace>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author typeCode="AUT" contextControlCode="OP">
+        <time xsi:type="TS" value="[IssueTime2]"/>
+        <assignedAuthor classCode="ASSIGNED">
+            <id root="2.16.156.10011.1.7" extension="[IssuedPeoleSign]"/>
+            <assignedPerson>
+                <name>[IssuedPeole]</name>
+            </assignedPerson>
+            <representedOrganization>
+                <id root="2.16.156.10011.1.5" extension="[IssuingAuthority]"/>
+                <name>[IssuingAuthorityName]</name>
+                <addr>[IssuingAuthorityAddress]</addr>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian typeCode="CST">
+        <assignedCustodian classCode="ASSIGNED">
+            <representedCustodianOrganization classCode="ORG" determinerCode="INSTANCE">
+                <id root="2.16.156.10011.1.6" extension="[CustodianOrganizationSign]"/>
+                <name>[CustodianOrganizationName]</name>
+                <telecom value="[CustodianOrganizationTelephone]"/>
+                <addr>[CustodianOrganizationAddress]</addr>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <time value="[IssueTime1]"/>
+        <signatureCode/>
+        <assignedEntity>
+            <id/>
+            <representedOrganization>
+                <name>[IssuingAuthorityName]</name>
+            </representedOrganization>
+        </assignedEntity>
+    </legalAuthenticator>
+    <component>
+        <structuredBody>
+            <component>
+                <section>
+                    <code code="11450-4" displayName="PROBLEM LIST" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC"/>
+                    <text>主要健康问题</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.10.006.00" displayName="出生孕周" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value value="[Gestation]" unit="周" xsi:type="PQ"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE05.10.034.00" displayName="健康状况代码" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[HealthStatusCode]" codeSystem="2.16.156.10011.2.3.2.60" codeSystemName="健康状况代码表" displayName="[HealthStatusCodeName]"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="8716-3" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="VITAL SIGNS"/>
+                    <text>生命体征</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.018.00" displayName="出生身长" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value value="[BirthLength]" unit="cm" xsi:type="PQ"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE04.10.019.00" displayName="出生体重" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value value="[BirthWeight]" unit="g" xsi:type="PQ"/>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="52" displayName="母亲" codeSystem="2.16.156.10011.2.3.3.8" codeSystemName="家庭关系代码表(GB/T 4761)"/>
+                    <subject>
+                        <relatedSubject>
+                            <subject>
+                                <name>[MotherName]</name>
+                                <birthTime xsi:type="TS" value="[MotherBirthday]"/>
+                            </subject>
+                        </relatedSubject>
+                    </subject>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE02.01.015.00" displayName="母亲国籍" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[MotherNationality]" displayName="[MotherNationalityName]" codeSystem="2.16.156.10011.2.3.3.1" codeSystemName="世界各国和地区名称代码(GB/T 2659)"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE02.01.025.00" displayName="母亲民族" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[MotherNation]" displayName="[MotherNationName]" codeSystem="2.16.156.10011.2.3.3.3" codeSystemName="民族类别代码表(GB 3304)"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE02.01.030.00" displayName="母亲身份证件号码" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[MotherIDCard]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code code="51" displayName="父亲" codeSystem="2.16.156.10011.2.3.3.8" codeSystemName="家庭关系代码表(GB/T 4761)"/>
+                    <subject contextControlCode="OP">
+                        <relatedSubject>
+                            <subject>
+                                <name>[FatherName]</name>
+                                <birthTime xsi:type="TS" value="[FatherBirthday]"/>
+                            </subject>
+                        </relatedSubject>
+                    </subject>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE02.01.015.00" displayName="父亲国籍" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[FatherNationality]" displayName="[FatherNationalityName]" codeSystem="2.16.156.10011.2.3.3.1" codeSystemName="世界各国和地区名称代码(GB/T 2659)"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE02.01.025.00" displayName="父亲民族" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="CD" code="[FatherNation]" displayName="[FatherNationName]" codeSystem="2.16.156.10011.2.3.3.3" codeSystemName="民族类别代码表(GB 3304)"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="DEF">
+                            <code code="DE02.01.030.00" displayName="父亲身份证件号码" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[FatherIDCard]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <code displayName="接生相关信息"/>
+                    <text>接生相关信息</text>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.01.004.00" displayName="出生地类别代码" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value code="[BirthplaceType]" displayName="[BirthplaceTypeName]" codeSystem="2.16.156.10011.2.3.1.2" codeSystemName="出生(分娩)地点类别代码表" xsi:type="CD"/>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE02.01.039.00" displayName="助产人员" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[MidwivesName]</value>
+                        </observation>
+                    </entry>
+                    <entry>
+                        <observation classCode="OBS" moodCode="EVN">
+                            <code code="DE08.10.013.00" displayName="助产机构" codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
+                            <value xsi:type="ST">[IssuingAuthorityName]</value>
+                        </observation>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+</ClinicalDocument>
