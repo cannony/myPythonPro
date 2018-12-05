@@ -1035,7 +1035,7 @@
                                 <observation classCode="OBS" moodCode="EVN">
                                     <code code="DE02.10.095.50" displayName="既往常见疾病种类代码"
                                           codeSystem="2.16.156.10011.2.2.1" codeSystemName="卫生信息数据元目录"/>
-                                    <value xsi:type="CD" code="[FamilyDiseaseNameCode]" displayName="[FamilyDiseaseNameCode]" codeSystem="2.16.156.10011.2.3.1.12"
+                                    <value xsi:type="CD" code="[FamilyDiseaseNameCode]" displayName="[FamilyDiseaseNameCodeName]" codeSystem="2.16.156.10011.2.3.1.12"
                                            codeSystemName="既往常见疾病种类代码表"/>
                                 </observation>
                             </component>
